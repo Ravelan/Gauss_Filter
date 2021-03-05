@@ -1,0 +1,3 @@
+LIBRARY "Projekt_JA_ASM"
+EXPORTS
+filter

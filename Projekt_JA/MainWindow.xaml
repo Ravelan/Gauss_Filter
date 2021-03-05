@@ -1,0 +1,48 @@
+﻿<Window x:Class="Projekt_JA.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekt_JA" xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        mc:Ignorable="d"
+        Title="Filtr Gaussa - Projekt JA Karol Piechota" Height="845.759" Width="1028">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="10*" />
+            <ColumnDefinition Width="25*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Image x:Name="Source_Image" Grid.Column="0" Grid.Row="0"></Image>
+        <Image x:Name="Final_Image" Grid.Column="2" Grid.Row="0"></Image>
+        <Grid Grid.Column="0"></Grid>
+
+        <Rectangle Fill="Gray" Grid.Column="1" Height="805" VerticalAlignment="Top" Grid.Row="0"></Rectangle>
+        <Rectangle Fill="Gray" Grid.Column="1" Height="805" VerticalAlignment="Top" Grid.Row="1"></Rectangle>
+
+        <Button Grid.Column="1" Margin="15,0,15,343" Click="Load_Photo" Height="25" VerticalAlignment="Bottom">Wybierz zdjęcie</Button>
+        <Button Grid.Column="1" Margin="15,0,15,193" Height="25" VerticalAlignment="Bottom" Click="Btn_Save">Zapisz zdjęcie</Button>
+        <Button Grid.Column="1" Margin="15,0,15,243" Height="25" RenderTransformOrigin="1.426,1.696" VerticalAlignment="Bottom" Click="Button_ASM">Wykonaj w Assembler</Button>
+        <Button Grid.Column="1" Margin="15,0,15,293" Height="25" Click="Button_Cs" VerticalAlignment="Bottom">Wykonaj w C#</Button>
+        <Slider Grid.Column="1" Margin="10,0,10,65" Minimum="1" Maximum="64" Value="32" TickPlacement="BottomRight" Name="Threads" IsSnapToTickEnabled="True" Height="40" VerticalAlignment="Bottom"/>
+        <TextBox Grid.Column="1" Text="{Binding ElementName=Threads, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Center" Margin="50,0,50,124" Height="24" VerticalAlignment="Bottom" />
+
+
+        <Label Grid.Column="1" Margin="41,0,43,164" HorizontalAlignment="Center" Height="24" VerticalAlignment="Bottom"  >Liczba wątków</Label>
+        <Label Grid.Column="1" Margin="17,0,18,353" Grid.Row="1" Height="33" VerticalAlignment="Bottom" >Czas wykonania filtracji:</Label>
+        <Label Grid.Column="1" Margin="50,0,50,306" VerticalAlignment="Bottom"  Name="czas" Grid.Row="1"  >0</Label>
+        <Label Grid.Column="1" Margin="25,0,120,303" Grid.Row="1" Height="28" VerticalAlignment="Bottom"   >ms</Label>
+
+        <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Right" Grid.Column="0" Grid.Row="1"  Name="chart">
+
+        </lvc:CartesianChart>
+
+        <lvc:CartesianChart Series="{Binding SeriesCollectionAfter}" LegendLocation="Right" Grid.Column="2" Grid.Row="1" Name="chartAfter">
+
+        </lvc:CartesianChart>
+
+    </Grid>
+</Window>
