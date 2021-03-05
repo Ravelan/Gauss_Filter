@@ -1,2 +1,2 @@
 # Projekt_JA
- Univeristy project
+ University project implementing gaussFilter using c# and assembly code
